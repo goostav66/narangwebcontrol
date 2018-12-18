@@ -135,7 +135,7 @@ $( document ).ready(function() {
 				echo "</ul></li>";
 				
 				echo "<li class='dropdown'>
-				<a href='code/test_sigun.php'>시/군(테스트)</a></li>";
+				<a href='".$path."/test_sigun.php'>시/군(테스트)</a></li>";
 
 				
 			}
