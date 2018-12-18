@@ -1,8 +1,3 @@
-# narangwebcontrol
+# Na랑 NFC 관리자 페이지
 
-# for portfolio 
-
-# by Yi Kyoung Min
-
-# PHP, MySQL
-
+# 환경 : PHP, MySQL
