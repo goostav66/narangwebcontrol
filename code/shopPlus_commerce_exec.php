@@ -353,7 +353,7 @@
 		$new_php_page = "";
 		if( $e_type == 0 && isset($_POST['files_amount']) ){
 			$new_php_page = check_create_page($connect, $e_page_url);
-			$page_absolute_path = "http://103.60.124.17/m/code/upload/commercial_pages/";
+			$page_absolute_path = "http://replica66.cafe24.com/m/code/upload/commercial_pages/";
 			$e_page_url = $page_absolute_path . $new_php_page;
 		}
 
@@ -385,7 +385,7 @@
 				if( isset($file_renamed) && !empty($file_renamed) ){
 					$page_path = "upload/commercial_pages/";
 					$php_file = fopen( $page_path.$new_php_page, "a") or die("파일을 작성하는데 실패하였습니다.");
-					$append_txt = "<img src='http://103.60.124.17/m/code/upload/commercial_imgs/".$file_renamed."'>";
+					$append_txt = "<img src='http://replica66.cafe24.com/m/code/upload/commercial_imgs/".$file_renamed."'>";
 					fwrite($php_file, $append_txt);
 					fclose($php_file);
 				}
@@ -397,7 +397,7 @@
 			$clientFile = $_FILES['submit_excommerce_main_img']['name'];
 			$serverFile = $_FILES['submit_excommerce_main_img']['tmp_name'];
 			$main_renamed = uploadImage($clientFile, $serverFile, $e_idx, 'main');
-			$e_main_img = "http://103.60.124.17/m/code/upload/commercial_imgs/". $main_renamed;
+			$e_main_img = "http://replica66.cafe24.com/m/code/upload/commercial_imgs/". $main_renamed;
 			$sql = "UPDATE ext_commerce SET e_main_img = '$e_main_img' WHERE idx = $e_idx";
 
 			mysqli_query($connect, $sql);
@@ -522,7 +522,7 @@
 		$new_php_page = "";
 		if( $e_type == 0 ){
 			$new_php_page = check_create_page($connect, $e_page_url);
-			$page_absolute_path = "http://103.60.124.17/m/code/upload/commercial_pages/";
+			$page_absolute_path = "http://replica66.cafe24.com/m/code/upload/commercial_pages/";
 			$e_page_url = $page_absolute_path . $new_php_page;
 		}
 		
@@ -544,7 +544,7 @@
 				$clientMainImg = $_FILES['e_main_img']['name'];
 				$serverMainImg = $_FILES['e_main_img']['tmp_name'];
 				$main_renamed = uploadImage($clientMainImg, $serverMainImg, $e_idx, 'main');
-				$e_main_img = "http://103.60.124.17/m/code/upload/commercial_imgs/".$main_renamed;
+				$e_main_img = "http://replica66.cafe24.com/m/code/upload/commercial_imgs/".$main_renamed;
 				$sql = "UPDATE ext_commerce SET e_main_img = '$e_main_img' WHERE idx = $e_idx";		
 					
 				mysqli_query($connect, $sql);
@@ -561,7 +561,7 @@
 					if( isset($file_renamed) && !empty($file_renamed) ){
 						$page_path = "upload/commercial_pages/";
 						$php_file = fopen( $page_path.$new_php_page, "a") or die("파일을 작성하는데 실패하였습니다.");
-						$append_txt = "<img src='http://103.60.124.17/m/code/upload/commercial_imgs/".$file_renamed."'>";
+						$append_txt = "<img src='http://replica66.cafe24.com/m/code/upload/commercial_imgs/".$file_renamed."'>";
 						fwrite($php_file, $append_txt);
 						fclose($php_file);
 					}
