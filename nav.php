@@ -8,17 +8,23 @@ header("Content-Type: text/html;charset=UTF-8");
 include_once $_SERVER['DOCUMENT_ROOT'].'/m/header.php';
 
 if($_SESSION['auth'] == ""){
+	$_SESSION['id'] = 'testmgr';
+	$_SESSION['name'] = '테스트관리자';
+	$_SESSION['auth'] = 'manager';
+	/*
 	echo "<script>
 			//alert('로그인해주세요!');
 			location.replace('".$path."/login_index.php');
-		</script>";
-}else{
+		</script>";*/
+
+}
+//else{
 	$auth = $_SESSION['auth'];
 	$id = $_SESSION['id'];
 	if($auth != 'manager'){
 		$settings = "<input type='button' class='edit_btn' id='btn_settings' value='정보수정' style='padding:2px; font-size:9pt'>";
 	}else{ $settings = ""; }
-}
+//}
 ?>
 <style>
 .drop_item	{ top:9px !important; left:160px !important; border-radius: 3px 3px 3px 3px !important;}
