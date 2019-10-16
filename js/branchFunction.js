@@ -4,7 +4,7 @@ $( document ).ready(function() {
 	$(document).on('click', '#btn_regist_branch', function (e) {
 		e.preventDefault();
 
-		var url_len = $("input[name='branch_code']").val().length;
+		var url_len = $("input[name='new_branch_code']").val().length;
 		var branch_name_len = $("input[name='branch_name']").val().length;
 		var ceo_name_len = $("input[name='branch_ceo_name']").val().length;
 		var ceo_phone_len= $("input[name='branch_ceo_phone']").val().length;
@@ -76,7 +76,7 @@ $( document ).ready(function() {
 		var idx = $(this).find("input[name='branch_idx']").val();
 		var url = "branchEdit.php?idx="+idx;
 		
-		window.open(url, "지사 정보 수정", "width=900, height=1000, scrollbars=yes, resizable=no");
+		window.open(url, "지사 정보 수정", "width=900, scrollbars=yes, resizable=no");
 	});
 	
 	//---------------------------------------------------------- 지사 팝업 닫기
