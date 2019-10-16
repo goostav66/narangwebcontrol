@@ -11,7 +11,7 @@
 	}
 	
 	# 가맹점 등록
-	if( isset($_POST['shop_name']) && !empty($_POST['shop_name']) ){
+	if( isset($_POST['new_shop_name']) && !empty($_POST['new_shop_name']) ){
 		registerShop($connect);
 	}
 	
@@ -338,10 +338,10 @@
 
 	function ViewList_pop($connect, $idx){
 
-		$qry = "SELECT s.*, a.`agent_name`, b.`branch_name`, a.`br_url`, h.`pass`
+		$qry = "SELECT s.*, a.`agent_name`, b.`branch_name`, a.`branch_code`, h.`pass`
 				FROM  shop s
-				JOIN agent a ON s.agent_idx = a.idx
-				JOIN branch b ON b.branch_code = a.br_url
+				JOIN agent a ON s.agent_idx = a.agent_idx
+				JOIN branch b ON b.branch_code = a.branch_code
 				JOIN shop_host h ON h.`url` = s.`url`
 				WHERE  s.`idx` = '$idx' ";
 
@@ -572,12 +572,12 @@
 
 			$qry = "SELECT  `agent_name`, `idx`
 					FROM  `agent`
-					WHERE  `br_url` =  '$branch_url'
+					WHERE  `branch_code` =  '$branch_url'
 					AND `id` IS NOT NULL AND `id` != ''";
 		}else{ //대리점
 			$qry = "SELECT  `agent_name`, `idx`
 					FROM  `agent`
-					WHERE  `br_url` =  '$branch_url' AND id = '$id'
+					WHERE  `branch_code` =  '$branch_url' AND id = '$id'
 					AND `id` IS NOT NULL AND `id` != ''";
 		}
 
@@ -686,7 +686,7 @@
 	}
 
 	function registerShop($connect){
-		$shop_name = $_POST['shop_name'];
+		$shop_name = $_POST['new_shop_name'];
 		$shop_type = (int)$_POST['shop_type'];
 		$agent_idx = (int)$_POST['agent'];
 		$shop_ceo_name = $_POST['shop_ceo_name'];

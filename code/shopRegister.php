@@ -49,7 +49,7 @@ window.name = "register";
 		<th class="last">등록</th>
 	</tr>
 	<tr class="list_item"><form method="post" id="form_shop_regist">
-        <td><input type="text" name="shop_name"></td>
+        <td><input type="text" name="new_shop_name"></td>
         <td>
             <select id="select_shop_type" name="shop_type">
                 <option value="0">분류 선택</option>

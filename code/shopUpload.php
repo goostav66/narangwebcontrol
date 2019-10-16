@@ -43,7 +43,7 @@ if(isset($_FILES["file"]["type"]) && isset($_POST['shop_img_idx']))
 			if($sourcePath){
 				//------upload/가맹점인덱스_날짜.확장자----------------------------------
 				$targetPath = "upload/".$idx."_".date("YmdHis").".".$file_extension;  
-				$photo_url = "http://103.60.124.17/m/code/".$targetPath;
+				$photo_url = "http://replica66.cafe24.com/m/code/".$targetPath;
 				//-----파일 업로드-------------------------------------------------------
 				$moved = move_uploaded_file($sourcePath, $targetPath) ; // Moving Uploaded file
 

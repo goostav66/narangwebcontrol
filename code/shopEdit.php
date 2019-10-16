@@ -70,8 +70,8 @@ include_once $_SERVER[DOCUMENT_ROOT].'/m/code/shop_exec.php';
 
 	while ($row = mysqli_fetch_assoc($result)) {
 	
-		if($row['isReserve'] != 0) $chk_res = "checked='checked'";
-		if($row['isFree_cds'] != 0) $chk_free = "checked='checked'";
+		//if($row['isReserve'] != 0) $chk_res = "checked='checked'";
+		//if($row['isFree_cds'] != 0) $chk_free = "checked='checked'";
 		if($row['isParking'] != 0) $chk_park = "checked='checked'";
 		if($row['isSeats'] != 0) $chk_seats = "checked='checked'";
 	
@@ -137,7 +137,7 @@ include_once $_SERVER[DOCUMENT_ROOT].'/m/code/shop_exec.php';
     </tr>
     <tr class="pop_list_item">
         <th>가맹일</th>
-        <td><input type="text" name="rgst_date" class="input_text" value="<?=$row['rgst_date']?>" readonly="readonly"></td>
+        <td><input type="text" name="rgst_date" class="input_text" value="<?=$row['shop_rgst_date']?>" readonly="readonly"></td>
     </tr>
     
     <tr class="pop_list_item">
@@ -154,7 +154,7 @@ include_once $_SERVER[DOCUMENT_ROOT].'/m/code/shop_exec.php';
         <th>지사 / 센터</th>
         <td>
             <select id="branch_name_edit" name="branch_name_edit">
-                <option value="<?=$row['br_url']?>"><?=$row['branch_name']?></option>
+                <option value="<?=$row['branch_code']?>"><?=$row['branch_name']?></option>
             </select>
         	<input type="hidden" name="isAgent" id="isAgent" value="<?=$isAgent?>" />
             <select id="agent_name_edit" name="agent_name_edit">
@@ -244,7 +244,7 @@ include_once $_SERVER[DOCUMENT_ROOT].'/m/code/shop_exec.php';
             평일 <input type="time" name="open_weekDay" value="<?=$row['open_weekDay']?>" /> ~ <input type="time" name="close_weekDay" value="<?=$row['close_weekDay']?>" /><br />
             주말 <input type="time" name="open_weekEnd" value="<?=$row['open_weekEnd']?>" /> ~ <input type="time" name="close_weekEnd" value="<?=$row['close_weekEnd']?>" /><br/>
             영업일 관련 정보(휴무일 등) : <input type="text" name="offday" class="input_text" value="<?=$row['offday']?>" size="50"><br />
-            <button type="button" class="edit_btn" id="table_infor_btn">테이블별 주문 내역</button>
+            <!-- <button type="button" class="edit_btn" id="table_infor_btn">테이블별 주문 내역</button> -->
         </td>
     </tr>
     
@@ -281,7 +281,7 @@ include_once $_SERVER[DOCUMENT_ROOT].'/m/code/shop_exec.php';
             <input type='checkbox' name='isParking' value="<?=$row['isParking']?>" <?=$chk_park?>>주차시설
             <input type='checkbox' name='isSeats' value="<?=$row['isSeats']?>" <?=$chk_seats?>>단체석 완비
         </td>
-    </tr>
+    </tr> 
     <? } ?>
     
     </form>
@@ -300,7 +300,7 @@ include_once $_SERVER[DOCUMENT_ROOT].'/m/code/shop_exec.php';
             <button type="button" class="edit_btn" id="tagListButton">검색어</button>
             <br/>※ 버튼을 클릭하면 각 항목 관리 페이지가 생성됩니다.
         </td>
-        </tr>
+    </tr>
 </table>
 <?php
 /* free result set */
