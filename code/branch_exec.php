@@ -45,7 +45,7 @@ include_once $_SERVER[DOCUMENT_ROOT].'/m/data/DB_connect.php';
 	
 	# 지사 등록
 	function registerBranch($connect){
-		$code = $_POST['branch_code'];
+		$code = $_POST['new_branch_code'];
 
 		$sql = "SELECT branch_code FROM branch WHERE branch_code = '$code'";
 		$result = mysqli_query($connect, $sql);
