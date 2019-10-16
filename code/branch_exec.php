@@ -9,7 +9,7 @@ include_once $_SERVER[DOCUMENT_ROOT].'/m/data/DB_connect.php';
 	}
 
 	# 지사 등록
-	if(isset($_POST['branch_code']) && !empty($_POST['branch_code']) ){
+	if(isset($_POST['new_branch_code']) && !empty($_POST['new_branch_code']) ){
 		registerBranch($connect);
 	}
 	

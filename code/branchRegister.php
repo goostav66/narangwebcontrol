@@ -50,7 +50,7 @@ include_once $_SERVER[DOCUMENT_ROOT].'/m/code/branch_exec.php';
 	</tr>
     
 	<tr class="list_item"><form method="post" id="form_rgst_branch">
-		<td><input type="text" name="branch_code" class="input_text"></td>
+		<td><input type="text" name="new_branch_code" class="input_text"></td>
         <td><input type="text" name="branch_name" class="input_text"></td>
 		<td><input type="text" name="branch_ceo_name" class="input_text"></td>
 		<td><input type="text" name="branch_ceo_phone" class="input_text"></td>
