@@ -3,7 +3,7 @@ $( document ).ready(function() {
 	//---------------------------------------------------------- 가맹점 등록
 	$(document).on('click', '#btn_regist_shop', function (e) {
 		e.preventDefault();
-		var shop_len = $("input[name='shop_name']").val().length;
+		var shop_len = $("input[name='new_shop_name']").val().length;
 		var store_type = $("select[name='shop_type']").val();
 		var branch = $("#select_branch").val();
 		var agent= $("#agent").val();
@@ -183,7 +183,6 @@ $( document ).ready(function() {
 					dataType: 'html',
 					success:function(){
 						if(data == "success"){
-							//alert("삭제가 완료되었습니다.");
 						}else{
 							alert(data);
 						}
@@ -199,6 +198,7 @@ $( document ).ready(function() {
 					dataType: 'html',
 					success:function(){
 						alert("수정을 완료하였습니다.");
+						window.opener.location.reload();
 					}
 				})
 
@@ -282,7 +282,7 @@ $( document ).ready(function() {
 	});
 
 	//---------------------------------------------------------- 가맹점 수정 > 지사 이름리스트 가져오기
-	$(document).on('click', '#branch_name_edit', function () {
+	/*$(document).on('click', '#branch_name_edit', function () {
 
 		var br_select = $("#branch_name_edit");
 		var br_val = $("#branch_name_edit").val();
@@ -312,7 +312,7 @@ $( document ).ready(function() {
 
 			}
 		})
-	});
+	});*/
 
 	//---------------------------------------------------------- 가맹점 수정 > 지사 선택 후 대리점 이름 가져오기
 	$(document).on('change', '#branch_name_edit', function () {
