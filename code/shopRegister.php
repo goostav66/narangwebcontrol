@@ -139,7 +139,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 	<td> <?=$num ?></td>
     <td> http://hanjicds001.gabia.io/index.jsp?p=<?=$row["url"]?></td>
 	<td> <?=$row["shop_name"]?></td>
-	<td> <?=$row["shop_addr"]?></td>
+	<td> <?=$row["address"]?></td>
 	<td> <?=$row["branch_name"]?></td>
 	<td> <?=$row["agent_name"]?></td>
 	<td> <?=$row["shop_ceo_name"]?></td>

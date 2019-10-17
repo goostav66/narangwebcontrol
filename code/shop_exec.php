@@ -570,15 +570,15 @@
 	function getAgent_pop($connect, $branch_url, $id){
 		if($id == ''){ //관리자, 지사
 
-			$qry = "SELECT  `agent_name`, `idx`
+			$qry = "SELECT  `agent_name`, `agent_idx`
 					FROM  `agent`
 					WHERE  `branch_code` =  '$branch_url'
-					AND `id` IS NOT NULL AND `id` != ''";
+					AND `agent_id` IS NOT NULL AND `agent_id` != ''";
 		}else{ //대리점
-			$qry = "SELECT  `agent_name`, `idx`
+			$qry = "SELECT  `agent_name`, `agent_idx`
 					FROM  `agent`
-					WHERE  `branch_code` =  '$branch_url' AND id = '$id'
-					AND `id` IS NOT NULL AND `id` != ''";
+					WHERE  `branch_code` =  '$branch_url' AND agent_id = '$id'
+					AND `agent_id` IS NOT NULL AND `agent_id` != ''";
 		}
 
 		/* Select queries return a resultset */
@@ -639,7 +639,7 @@
 		if( 'manager' == $auth ){
 			$sql = "SELECT s.*, CONCAT(tlc.location_place, ' ', s.shop_addr) AS address, b.branch_name, a.agent_name FROM shop AS s 
 					LEFT JOIN table_location_code AS tlc ON tlc.location_code = s.location_code 
-					LEFT JOIN agent AS a ON a.agent_code = s.manager_code 
+					LEFT JOIN agent AS a ON a.agent_idx = s.agent_idx
 					LEFT JOIN branch AS b ON b.branch_code = a.branch_code OR b.branch_code = s.manager_code 
 					ORDER BY shop_rgst_date DESC";
 
@@ -747,7 +747,7 @@
 
 		$shop_name = $_POST['shop_name'];
 		$type = $_POST['store_type'];
-		$url = $_POST['url'];
+		$url = $_POST['edit_url'];
 		$del_idx = $_POST['del_idx'];
 		$agent_idx = $_POST['agent_name_edit'];
 
@@ -792,7 +792,7 @@
 		shop_phone = '$shop_phone',
 		shop_ceo_phone = '$shop_ceo_phone',
 	
-		shop_rgst_date = '$shop_rgst_date',
+		/*shop_rgst_date = '$shop_rgst_date',*/
 		shop_edit_date = CURRENT_TIMESTAMP,
 		open_weekDay = '$open_weekDay',
 		close_weekDay = '$close_weekDay',
@@ -802,15 +802,13 @@
 		offday = '$offday',
 		intro_text = '$intro_text',
 		discount = '$discount ',
-		isReserve = '$isReserve',
-		isFree_cds = '$isFree_cds',
 		isParking = '$isParking',
 		isSeats = '$isSeats',
 		lat = '$lat',
 		lng = '$lng'
 
 
-		WHERE  `shop`.`idx` = '$idx'";
+		WHERE  shop.idx = '$idx'";
 
 		if ($connect->query($qry) === TRUE) {
 			//echo "success";

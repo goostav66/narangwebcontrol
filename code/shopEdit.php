@@ -158,18 +158,18 @@ include_once $_SERVER[DOCUMENT_ROOT].'/m/code/shop_exec.php';
             </select>
         	<input type="hidden" name="isAgent" id="isAgent" value="<?=$isAgent?>" />
             <select id="agent_name_edit" name="agent_name_edit">
-		<?php
-        if($isAgent == 'n')
-        	$id = '';
- 
-        $agent = getAgent_pop($connect, $row['br_url'], $id);
-		
-        while ($ag = mysqli_fetch_assoc($agent)) {
-			if($ag['idx'] == $row['agent_idx'] ) $isSelect = "selected";
-			else $isSelect = "";
-        	echo "<option value='".$ag['idx']."' ".$isSelect.">".$ag["agent_name"]."</option>";
-        }
-        ?>
+			<?php
+	        if($isAgent == 'n')
+	        	$id = '';
+	 
+	        $agent = getAgent_pop($connect, $row['branch_code'], $id);
+			
+	        while ($ag = mysqli_fetch_assoc($agent)) {
+				if($ag['agent_idx'] == $row['agent_idx'] ) $isSelect = "selected";
+				else $isSelect = "";
+	        	echo "<option value='".$ag['agent_idx']."' ".$isSelect.">".$ag["agent_name"]."</option>";
+	        }
+	        ?>
             </select>
         </td>
     </tr>
