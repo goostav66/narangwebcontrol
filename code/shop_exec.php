@@ -337,12 +337,11 @@
 
 
 	function ViewList_pop($connect, $idx){
-
 		$qry = "SELECT s.*, a.`agent_name`, b.`branch_name`, a.`branch_code`, h.`pass`
 				FROM  shop s
-				JOIN agent a ON s.agent_idx = a.agent_idx
-				JOIN branch b ON b.branch_code = a.branch_code
-				JOIN shop_host h ON h.`url` = s.`url`
+				LEFT JOIN agent a ON s.agent_idx = a.agent_idx
+				LEFT JOIN branch b ON b.branch_code = a.branch_code
+				LEFT JOIN shop_host h ON h.`url` = s.`url`
 				WHERE  s.`idx` = '$idx' ";
 
 		/* Select queries return a resultset */
