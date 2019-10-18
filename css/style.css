@@ -186,6 +186,7 @@ nav {
 }
 
 /* */
+.wrap {}
 #logo { margin:0 auto; width:90%; min-width:650px; height:80px; text-align:center}
 #logo img {width:120px; padding:10px}
 .top_title {display: inline-block;
