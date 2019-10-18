@@ -57,15 +57,16 @@ $( document ).ready(function() {
 					type:'POST',
 					data:params,
 					success:function(data){
-						var num = $("#insert_data tr").length;
-						if(data == 'duplicate'){
+					
+						if(data.toLowerCase() == 'duplicate'){
 							alert('이미 등록된 코드입니다.');
-							return;
 						}else if(data != 'error'){
+							var num = $("#insert_data tr").length;
 							$("#insert_data tr:first").after(data);
-							$(".list_item:first").find("td:first").text(num);
+							$("#insert_data .list_item:first").find("td:first").text(num);
 						}
-					}			
+					}
+								
 				})			
 			}
 		}	
@@ -113,15 +114,17 @@ $( document ).ready(function() {
 					success:function(data){
 						if(data == "success"){
 							alert("수정을 완료하였습니다.");
-							setTimeout(function(){window.location.reload();},1000);
+
+							window.opener.location.reload();
+						
+							
+							
 						}else{
 							alert(data);
 						}
 					}
-				})
-							
-				
-				
+				})	
+
 			} else {
 				return false;
 			}
