@@ -49,8 +49,9 @@ include_once $_SERVER[DOCUMENT_ROOT].'/m/data/DB_connect.php';
 
 		$sql = "SELECT branch_code FROM branch WHERE branch_code = '$code'";
 		$result = mysqli_query($connect, $sql);
-		if( mysqli_num_rows($connect) > 0 ){
+		if( mysqli_num_rows($result) > 0 ){
 			echo "duplicate";
+		
 		}else{
 			$id = 'nfc'.$code;
 			$name = $_POST['branch_name'];
@@ -61,7 +62,7 @@ include_once $_SERVER[DOCUMENT_ROOT].'/m/data/DB_connect.php';
 
 			if( mysqli_query($connect, $sql) ){
 
-				$branch_idx = mysql_insert_id($connect);
+				$branch_idx = mysqli_insert_id($connect);
 
 				$sql = "INSERT user (id, pw, auth, name, rgst_date) VALUES ('$id', '1234', 'branch', '$branch_name', CURRENT_TIMESTAMP)";
 				if( mysqli_query($connect, $sql) ){
