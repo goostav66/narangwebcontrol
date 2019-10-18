@@ -142,24 +142,27 @@ include_once $_SERVER[DOCUMENT_ROOT].'/m/data/DB_connect.php';
 	
 	# 지사 삭제
 	function deleteBranch($connect, $branch_idx){
-		$sql = "SELECT b.branch_id, b.branch_code, a.agent_code, s.url FROM branch AS b 
-				LEFT JOIN agent AS a ON a.branch_code = b.branch_code 
-				LEFT JOIN shop AS s ON s.manager_code = b.branch_code OR s.manager_code = a.agent_code
-				WHERE b.branch_idx = $branch_idx";
-		
+		$sql = "SELECT b.branch_code, b.branch_id, a.agent_code, s.url 
+				FROM branch AS b 
+				LEFT JOIN agent as a ON a.branch_code = b.branch_code 
+				LEFT JOIN shop as s ON s.manager_code = b.branch_code OR s.agent_idx = a.agent_idx 
+				WHERE b.branch_idx = '$branch_idx' LIMIT 1";
+
 		$result = mysqli_query($connect, $sql);
-		if ( mysqli_num_rows($result) > 0 ){
-			echo "등록된 대리점이 있어 삭제할 수 없습니다.";
-		}else{
-			$row = mysqli_fetch_assoc($result);
+		$row = mysqli_fetch_assoc($result);
+		
+		if ( empty($row['agent_code']) && empty($row['url']) ){
 			$branch_id = $row['branch_id'];
 			$sql = "DELETE FROM branch WHERE branch_idx = $branch_idx";
 			if(mysqli_query($connect, $sql)){
 				$sql = "DELETE FROM user WHERE id = '$branch_id'";
-				
 				mysqli_query($connect, $sql);
 				echo "success";
-			}	
+			}		
+		}else{
+			echo "등록된 대리점이 있어 삭제할 수 없습니다.";
 		}
+
+		
 	}
 ?>
